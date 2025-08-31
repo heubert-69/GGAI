@@ -209,16 +209,5 @@ __marimo__/
 =======
 # Environment variables
 .env
-.env.local
-.env.*.local
 
-# Your specific files
-easter_egg.py
-letters/
-*.json
-
-# Python-specific ignores
-__pycache__/
-*.py[cod]
-*.class
 >>>>>>> 200e4b0 (GGAI Files)
