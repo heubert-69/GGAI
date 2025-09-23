@@ -1,7 +1,6 @@
 import os
 import tempfile
 import requests
-from playsound import playsound
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -51,4 +50,5 @@ def speak(text: str, emotion: str = "neutral"):
             print(f"[HUME] Failed ({response.status_code}): {response.text}")
 
     except Exception as e:
+
         print(f"[HUME] Error occurred: {e}")
