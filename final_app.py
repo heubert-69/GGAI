@@ -1,13 +1,25 @@
 import streamlit as st
 import uuid
 import os
+import firebase_admin
+from firebase_admin import credentials, firestore
 from dotenv import load_dotenv
 from utils.firebase_utils import get_user_terms_acceptance, set_user_terms_acceptance, save_user_interaction
 from utils.personality_prompt import get_personality_prompt, PERSONALITY_PROMPTS
 from utils.expression_utils import speak
 import cohere
 
-#necessary function for easter egg
+if not firebase_admin._apps:
+    cred = credentials.Certificate(dict(st.secrets["FIREBASE"]))
+    firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+
+
+
+
+
+#Necessary function for easter egg
 def show_easter_letter():
     with open("letters/my_roman_empire.txt", "r", encoding="utf-8") as f:
         letter = f.read()
