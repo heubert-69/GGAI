@@ -5,8 +5,13 @@ from dotenv import load_dotenv
 from utils.firebase_utils import get_user_terms_acceptance, set_user_terms_acceptance, save_user_interaction
 from utils.personality_prompt import get_personality_prompt, PERSONALITY_PROMPTS
 from utils.expression_utils import speak
-from easter_egg import play_easter_egg
 import cohere
+
+#necessary function for easter egg
+def show_easter_letter():
+    with open("letters/my_roman_empire.txt", "r", encoding="utf-8") as f:
+        letter = f.read()
+    st.text(letter)
 
 # Load environment variables
 load_dotenv()
@@ -48,8 +53,8 @@ user_text = st.text_input("You:", key="user_input")
 if st.button("Send") and user_text:
     # Check for easter egg trigger
     if "23" in user_text.lower():
-        st.info("💌 Easter Egg Triggered")
-        play_easter_egg()
+        st.info("Secret Triggered")
+        show_easter_letter()
     else:
         # Save user interaction
         save_user_interaction(st.session_state.user_id, {"user": user_text})
@@ -67,14 +72,14 @@ if st.button("Send") and user_text:
         final_prompt = f"{persona}\n\n{fewshot}\nUser: {user_text}\nGothGirl:"
         
         # Generate response
-        response = co.generate(
-            model="command-r-plus",
-            prompt=final_prompt,
-            max_tokens=200,
-            temperature=0.8
-        )
+        response = co.v2.chat(
+    		model="command-a-reasoning-08-2025",
+    		messages=[
+        		{"role": "user", "content": "Hey, how are you today?"}
+    		]
+	)
         
-        reply = response.generations[0].text.strip()
+        reply = " ".join([c.text for c in response.message.content if c.type == "text"])
         
         # Save and display response
         st.session_state.messages.append((user_text, reply))
