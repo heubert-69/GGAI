@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-HUME_API_KEY = os.getenv("HUME_API_KEY")
+HUME_API_KEY = mrjppJEugflBU9Vrq6YBiQjnJaACiGBMSVD9LdnUWpe8WVlM
 HUME_VOICE = os.getenv("HUME_VOICE", "emma")
 
 def speak(text: str, emotion: str = "neutral"):
@@ -50,5 +50,4 @@ def speak(text: str, emotion: str = "neutral"):
             print(f"[HUME] Failed ({response.status_code}): {response.text}")
 
     except Exception as e:
-
         print(f"[HUME] Error occurred: {e}")

@@ -15,10 +15,6 @@ if not firebase_admin._apps:
 
 db = firestore.client()
 
-
-
-
-
 #Necessary function for easter egg
 def show_easter_letter():
     with open("letters/my_roman_empire.txt", "r", encoding="utf-8") as f:
