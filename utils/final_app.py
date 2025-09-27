@@ -10,7 +10,7 @@ from utils.expression_utils import speak
 import cohere
 
 if not firebase_admin._apps:
-    cred = credentials.Certificate(st.secrets["FIREBASE"])
+    cred = credentials.Certificate(dict(st.secrets["FIREBASE"]))
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
