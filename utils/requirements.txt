@@ -1,4 +1,0 @@
-firebase-admin
-cohere
-dotenv
-streamlit
