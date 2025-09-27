@@ -1,5 +1,6 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
+import streamlit as st
 
 if not firebase_admin._apps:
     firebase_config = dict(st.secrets["FIREBASE"])
@@ -36,4 +37,5 @@ def get_recent_interactions(user_id, limit=5):
     for doc in docs:
         interactions.append(doc.to_dict())
     
+
     return interactions
