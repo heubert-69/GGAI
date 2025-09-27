@@ -1,9 +1,12 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-# Initialize Firebase
-cred = credentials.Certificate("firebase-credentials.json")
-firebase_admin.initialize_app(cred)
+if not firebase_admin._apps:
+    firebase_config = dict(st.secrets["FIREBASE"])
+    firebase_config["private_key"] = firebase_config["private_key"].replace("\\n", "\n")
+    cred = credentials.Certificate(firebase_config)
+    firebase_admin.initialize_app(cred)
+
 db = firestore.client()
 
 def get_user_terms_acceptance(user_id):
