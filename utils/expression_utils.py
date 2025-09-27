@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-HUME_API_KEY = mrjppJEugflBU9Vrq6YBiQjnJaACiGBMSVD9LdnUWpe8WVlM
+HUME_API_KEY = os.getenv("HUME_API_KEY")
 HUME_VOICE = os.getenv("HUME_VOICE", "emma")
 
 def speak(text: str, emotion: str = "neutral"):
