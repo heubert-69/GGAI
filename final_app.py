@@ -83,7 +83,7 @@ if st.button("Send") and user_text:
         response = co.v2.chat(
     		model="command-a-reasoning-08-2025",
     		messages=[
-        		{"role": "user", "content": "Hey, how are you today?"}
+        		{"role": "user", "content": final_prompt}
     		]
 	)
         
@@ -107,3 +107,4 @@ if st.button("Send") and user_text:
 for user_msg, bot_msg in reversed(st.session_state.messages):
     st.markdown(f"**You:** {user_msg}")
     st.markdown(f"**Pookie:** {bot_msg}")
+
