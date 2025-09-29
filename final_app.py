@@ -85,7 +85,7 @@ if st.button("Send") and user_text:
     		messages=[
         		{"role": "user", "content": final_prompt}
     		]
-	)
+		)
         
         reply = " ".join([c.text for c in response.message.content if c.type == "text"])
         
@@ -107,4 +107,5 @@ if st.button("Send") and user_text:
 for user_msg, bot_msg in reversed(st.session_state.messages):
     st.markdown(f"**You:** {user_msg}")
     st.markdown(f"**Pookie:** {bot_msg}")
+
 
