@@ -106,6 +106,7 @@ if st.button("Send") and user_text:
 # Display Chat History
 for user_msg, bot_msg in reversed(st.session_state.messages):
     st.markdown(f"**You:** {user_msg}")
-    st.markdown(f"**Pookie:** {bot_msg}")
+    st.markdown(f"{bot_msg}")
+
 
 
